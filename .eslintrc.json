@@ -5,6 +5,7 @@
   "env": { "browser": true, "node": true, "jest": true },
   "rules": {
     "prettier/prettier": "error",
-    "react/no-unescaped-entities": 0 
+    "react/no-unescaped-entities": 0,
+    "react/prop-types": 1
   }
 }

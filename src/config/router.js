@@ -12,6 +12,7 @@ import Home from '../screens/home'
 import Details from '../screens/details'
 import Search from '../screens/search'
 import Animation from '../screens/animation'
+import Favorite from '../screens/favorite'
 
 import PrivateRoute from '../utils/privateRoute'
 
@@ -24,6 +25,7 @@ const Routes = () => {
         <PrivateRoute path='/details/:id' component={Details} />
         <PrivateRoute path='/search' component={Search} />
         <PrivateRoute path='/animation' component={Animation} />
+        <PrivateRoute path='/favorite' component={Favorite} />
         <Redirect to='/'></Redirect>
       </Switch>
     </Router>

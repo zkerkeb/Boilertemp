@@ -34,12 +34,45 @@ const Home = props => {
         console.log(err)
       })
   }, [currentPage])
+
+  const handleFavorite = hero => {
+    console.log('handleFavorite -> hero', hero)
+    const currentFavorite = localStorage.getItem('favorite')
+      ? JSON.parse(localStorage.getItem('favorite'))
+      : []
+
+    const isPresent = currentFavorite.map(e => e.id).indexOf(hero.id)
+    console.log('isPresent', isPresent)
+
+    if (isPresent === -1) {
+      currentFavorite.push(hero)
+      localStorage.setItem('favorite', JSON.stringify(currentFavorite))
+    } else {
+      const filteredCharacters = currentFavorite.filter(
+        character => character.id !== hero.id
+      )
+      console.log('filteredCharacters', filteredCharacters)
+      localStorage.setItem('favorite', JSON.stringify(filteredCharacters))
+    }
+  }
+
   return (
     <div>
       <Link to='/search'>RECHERCHER PERSONNAGE</Link>
+      <div>
+        <Link to='/favorite'>Favoris</Link>
+      </div>
+      {!charactersList[0] ? <p>pas de connexion</p> : null}
       {charactersList.map(character => (
         <div key={character.id}>
           <Link to={`/details/${character.id}`}>{character.name}</Link>
+          <button
+            onClick={() =>
+              handleFavorite({ id: character.id, name: character.name })
+            }
+          >
+            add To Favorite
+          </button>
         </div>
       ))}
       <Pagination

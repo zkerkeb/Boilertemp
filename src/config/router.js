@@ -13,6 +13,8 @@ import Details from '../screens/details'
 import Search from '../screens/search'
 import Animation from '../screens/animation'
 import Favorite from '../screens/favorite'
+import Counter from '../screens/counter'
+import Potter from '../screens/potter'
 
 import PrivateRoute from '../utils/privateRoute'
 
@@ -26,6 +28,8 @@ const Routes = () => {
         <PrivateRoute path='/search' component={Search} />
         <PrivateRoute path='/animation' component={Animation} />
         <PrivateRoute path='/favorite' component={Favorite} />
+        <PrivateRoute path='/counter' component={Counter} />
+        <PrivateRoute path='/potter' component={Potter} />
         <Redirect to='/'></Redirect>
       </Switch>
     </Router>

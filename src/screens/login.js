@@ -3,6 +3,9 @@ import axios from 'axios'
 
 import Header from '../components/header'
 import Signin from '../components/signin'
+// import i18n from 'i18next'
+
+import { useTranslation } from 'react-i18next'
 
 const submit = (e, formState, setErrorMessage, history) => {
   e.preventDefault()
@@ -29,7 +32,9 @@ const submit = (e, formState, setErrorMessage, history) => {
 }
 
 const Login = ({ history }) => {
+  const { t, i18n } = useTranslation()
   useEffect(() => {
+    console.log('Login -> i18n.t', i18n.t('menu'))
     const token = localStorage.getItem('token')
     console.log('Login -> token', token)
     if (token) {
@@ -38,6 +43,12 @@ const Login = ({ history }) => {
   }, [])
   return (
     <div>
+      <p>test</p>
+      <p>{t('menu')}</p>
+      <p>{t('login.title')}</p>
+      <button onClick={() => i18n.changeLanguage('fr')}>Fr</button>
+      <button onClick={() => i18n.changeLanguage('en')}>En</button>
+
       <Header backgroundColor='green'></Header>
       <Signin submit={submit}></Signin>
     </div>
